@@ -1,0 +1,28 @@
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+	width: 50%;
+}
+.button:hover {
+	background-color: #333333;
+}
+
+.button:active {
+	color: #4CAF50;
+	background-color: white;
+	border: 2px solid #4CAF50;
+	font-weight: bold;
+}
+
+.border {
+	border: 2px solid green;
+	border-radius: 5px;
+}
