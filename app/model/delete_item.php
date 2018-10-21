@@ -4,13 +4,13 @@ require('config.inc');
 
 //This file contains php code that will be executed after the
 //insert operation is done.
-require('store_add_result_ui.inc');
+require('item_delete_result_ui.inc');
 
 // Main control logic
-insert_store_loc();
+delete_item();
 
 //-------------------------------------------------------------
-function insert_store_loc(){
+function delete_item(){
 
 	// Connect to the 'test' database 
         // The parameters are defined in the teach_cn.inc file
@@ -20,39 +20,29 @@ function insert_store_loc(){
 	// Get the information entered into the webpage by the user
         // These are available in the super global variable $_POST
 	// This is actually an associative array, indexed by a string
-	$StoreId = $_POST['StoreId'];
-	$StoreCode = $_POST['StoreCode'];
-	$StoreName = $_POST['StoreName'];
-    $Address = $_POST['Address'];
-    $City = $_POST['City'];
-    $State = $_POST['State'];
-    $ZIP = $_POST['ZIP'];
-    $Phone = $_POST['Phone'];
-    $ManagerName = $_POST['ManagerName'];
+	$itemId = $_POST['ItemId'];
         
 	// Create a String consisting of the SQL command. Remember that
         // . is the concatenation operator. $varname within double quotes
  	// will be evaluated by PHP
-	$insertStmt = "insert RETAILSTORE (StoreId, StoreCode, StoreName, 
-		       Address, City, State, ZIP, Phone) values ( '$StoreId', '$StoreCode',
-                      '$StoreName', '$Address', '$City', '$State', '$ZIP', '$Phone', '$ManagerName')";
+	$query = "DELETE FROM INVENTORYITEM WHERE ItemId = $itemId"
 
 	//Execute the query. The result will just be true or false
-	$result = mysql_query($insertStmt);
+	$result = mysql_query($query);
 
 	$message = "";
 
 	if (!$result) 
 	{
-  	  $message = "Error in inserting item: $StoreName , $Address: ". mysql_error();
+  	  $message = "Error in deleting item: $itemId". mysql_error();
 	}
 	else
 	{
-	  $message = "Data for item: $StoreName , $Address inserted successfully.";
+	  $message = "Data for item: $itemId";
 	  
 	}
 
-	store_add_result_ui($message);
+	item_delete_result_ui($message);
 			   
 }
 

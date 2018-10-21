@@ -1,13 +1,11 @@
 <?php
 
-ui_show_result;
-
-function ui_show_result($message) {
+function item_delete_result_ui($message)
+{
   //----------------------------------------------------------
   // Start the html page
   echo "<HTML>";
   echo "<HEAD>";
-		echo "<link href='./style/style.css' rel='stylesheet' type='text/css'/>";
   echo "</HEAD>";
   echo "<BODY>";
 
@@ -25,8 +23,8 @@ function ui_show_result($message) {
 echo <<<UPTOEND
   <BR/><BR/>
   <center>
-  <input type="button" value="Return to Main Menu"
-	onClick="window.location='../view/index.html'"/>
+  <input type="button" value="Return to Main Menu" 
+	onClick="window.location='index.html'"/>
   </center>
 UPTOEND;
 
@@ -34,4 +32,3 @@ UPTOEND;
  echo "</HTML>";
 }
 ?>
-

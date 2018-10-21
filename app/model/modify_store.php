@@ -4,13 +4,13 @@ require('config.inc');
 
 //This file contains php code that will be executed after the
 //insert operation is done.
-require('store_add_result_ui.inc');
+require('store_modify_result_ui.inc');
 
 // Main control logic
-insert_store_loc();
+modify_store_loc();
 
 //-------------------------------------------------------------
-function insert_store_loc(){
+function modify_store_loc(){
 
 	// Connect to the 'test' database 
         // The parameters are defined in the teach_cn.inc file
@@ -33,43 +33,43 @@ function insert_store_loc(){
 	// Create a String consisting of the SQL command. Remember that
         // . is the concatenation operator. $varname within double quotes
  	// will be evaluated by PHP
-	$insertStmt = "insert RETAILSTORE (StoreId, StoreCode, StoreName, 
+	$query = "insert RETAILSTORE (StoreId, StoreCode, StoreName, 
 		       Address, City, State, ZIP, Phone) values ( '$StoreId', '$StoreCode',
                       '$StoreName', '$Address', '$City', '$State', '$ZIP', '$Phone', '$ManagerName')";
 
 	//Execute the query. The result will just be true or false
-	$result = mysql_query($insertStmt);
+	$result = mysql_query($query);
 
 	$message = "";
 
 	if (!$result) 
 	{
-  	  $message = "Error in inserting item: $StoreName , $Address: ". mysql_error();
+  	  $message = "Error in modifying: $StoreName , $Address: ". mysql_error();
 	}
 	else
 	{
-	  $message = "Data for item: $StoreName , $Address inserted successfully.";
+	  $message = "Data for $StoreName , $Address inserted successfully.";
 	  
 	}
 
-	store_add_result_ui($message);
+	store_add_modify_ui($message);
 			   
 }
 
 function connect_and_select_db($server, $username, $pwd, $dbname)
 {
 	// Connect to db server
-	$conn = mysql_connect($server, $username, $pwd);
+	$conn = mysqli_connect($server, $username, $pwd);
 
 	if (!$conn) {
 	    echo "Unable to connect to DB: " . mysql_error();
-    	    exit;
+    	exit;
 	}
 
 	// Select the database	
 	$dbh = mysql_select_db($dbname);
 	if (!$dbh){
-    		echo "Unable to select ".$dbname.": " . mysql_error();
+    	echo "Unable to select ".$dbname.": " . mysql_error();
 		exit;
 	}
 }
