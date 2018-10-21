@@ -1,0 +1,36 @@
+<?php
+
+ui_show_result;
+
+function ui_show_result($message) {
+  //----------------------------------------------------------
+  // Start the html page
+  echo "<HTML>";
+  echo "<HEAD>";
+		echo "<link href='./style/style.css' rel='stylesheet' type='text/css'/>";
+  echo "</HEAD>";
+  echo "<BODY>";
+
+  // If the message is non-null and not an empty string print it
+  // message contains the lastname and firstname
+  if ($message)
+  {
+    if ($message != "")
+       {
+	 echo '<center><font color="blue">'.$message.'</font></center><br />';
+       }
+  }
+
+//finish up the html code, and put the return button to go back to main menu
+echo <<<UPTOEND
+  <BR/><BR/>
+  <center>
+  <input type="button" value="Return to Main Menu"
+	onClick="window.location='../view/index.html'"/>
+  </center>
+UPTOEND;
+
+ echo "</BODY>";
+ echo "</HTML>";
+}
+?>
