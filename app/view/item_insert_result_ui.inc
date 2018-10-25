@@ -1,7 +1,6 @@
 <?php
 
-function ui_show_teacher_insert_result($message, $lastname, $firstname, 
-		$specialization, $highestdegree)
+function ui_show_item_insert_result($message)
 {
   //----------------------------------------------------------
   // Start the html page
@@ -25,7 +24,7 @@ echo <<<UPTOEND
   <BR/><BR/>
   <center>
   <input type="button" value="Return to Main Menu" 
-	onClick="window.location='index.html'"/>
+	onClick="window.location='../view/index.html'"/>
   </center>
 UPTOEND;
 

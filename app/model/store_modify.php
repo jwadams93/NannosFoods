@@ -1,16 +1,16 @@
 <?php
 
-require('config.inc');
+require('../config/config.inc');
 
 //This file contains php code that will be executed after the
 //insert operation is done.
-require('store_modify_result_ui.inc');
+require('../view/store_add_result_ui.inc');
 
 // Main control logic
-modify_store_loc();
+update_store_loc();
 
 //-------------------------------------------------------------
-function modify_store_loc(){
+function update_store_loc(){
 
 	// Connect to the 'test' database 
         // The parameters are defined in the teach_cn.inc file
@@ -19,9 +19,8 @@ function modify_store_loc(){
 
 	// Get the information entered into the webpage by the user
         // These are available in the super global variable $_POST
-	// This is actually an associative array, indexed by a string
-	$StoreId = $_POST['StoreId'];
-	$StoreCode = $_POST['StoreCode'];
+    // This is actually an associative array, indexed by a string
+    $StoreCode = $_POST['StoreCode'];
 	$StoreName = $_POST['StoreName'];
     $Address = $_POST['Address'];
     $City = $_POST['City'];
@@ -33,43 +32,41 @@ function modify_store_loc(){
 	// Create a String consisting of the SQL command. Remember that
         // . is the concatenation operator. $varname within double quotes
  	// will be evaluated by PHP
-	$query = "insert RETAILSTORE (StoreId, StoreCode, StoreName, 
-		       Address, City, State, ZIP, Phone) values ( '$StoreId', '$StoreCode',
-                      '$StoreName', '$Address', '$City', '$State', '$ZIP', '$Phone', '$ManagerName')";
+	$updateStmt = "UPDATE `RETAILSTORE` SET StoreName = '$StoreName', Address = '$Address', City = '$City', State = '$State', ZIP = '$ZIP', Phone = '$Phone', ManagerName = '$ManagerName' WHERE StoreCode = '$StoreCode'";
 
 	//Execute the query. The result will just be true or false
-	$result = mysql_query($query);
+	$result = mysql_query($updateStmt);
 
 	$message = "";
 
 	if (!$result) 
 	{
-  	  $message = "Error in modifying: $StoreName , $Address: ". mysql_error();
+  	  $message = "Error in updating Store: $StoreName , $Address: ". mysql_error();
 	}
 	else
 	{
-	  $message = "Data for $StoreName , $Address inserted successfully.";
+	  $message = "Data for Store: $StoreName , $Address updated successfully.";
 	  
 	}
 
-	store_add_modify_ui($message);
+	ui_show_store_loc_result($message);
 			   
 }
 
 function connect_and_select_db($server, $username, $pwd, $dbname)
 {
 	// Connect to db server
-	$conn = mysqli_connect($server, $username, $pwd);
+	$conn = mysql_connect($server, $username, $pwd);
 
 	if (!$conn) {
 	    echo "Unable to connect to DB: " . mysql_error();
-    	exit;
+    	    exit;
 	}
 
 	// Select the database	
 	$dbh = mysql_select_db($dbname);
 	if (!$dbh){
-    	echo "Unable to select ".$dbname.": " . mysql_error();
+    		echo "Unable to select ".$dbname.": " . mysql_error();
 		exit;
 	}
 }

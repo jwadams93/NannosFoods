@@ -25,7 +25,7 @@ function delete_item(){
 	// Create a String consisting of the SQL command. Remember that
         // . is the concatenation operator. $varname within double quotes
  	// will be evaluated by PHP
-	$query = "DELETE FROM INVENTORYITEM WHERE ItemId = $itemId"
+	$query = "DELETE FROM INVENTORYITEM WHERE ItemId = $itemId";
 
 	//Execute the query. The result will just be true or false
 	$result = mysql_query($query);
