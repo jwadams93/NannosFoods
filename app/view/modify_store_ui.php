@@ -55,7 +55,7 @@ $results = mysql_fetch_array(mysql_query($query));
 
                 <div class="form-group">
                     <label>Store Name</label>
-                    <input type="text" name="StoreName" placeholder="<?php echo $results['StoreName']?>" class="form-control">
+                    <input type="text" name="StoreName" value="<?php echo $results['StoreName']?>" class="form-control">
                 </div>
 
                 <div class="form-group">
