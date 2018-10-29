@@ -1,11 +1,8 @@
 <?php
 
-require('config.inc');
+require('../config/config.inc');
 
-//This file contains php code that will be executed after the
-//insert operation is done.
-require('item_delete_result_ui.inc');
-
+session_start();
 // Main control logic
 delete_item();
 
@@ -17,32 +14,30 @@ function delete_item(){
         // These are global constants
 	connect_and_select_db(DB_SERVER, DB_UN, DB_PWD,DB_NAME);	
 
-	// Get the information entered into the webpage by the user
-        // These are available in the super global variable $_POST
-	// This is actually an associative array, indexed by a string
-	$itemId = $_POST['ItemId'];
-        
+	// Get the information entered into the URL by the user
+    // These are available in the super global variable $_POST
+    // This is actually an associative array, indexed by a string
+    if(isset($_GET['ItemId'])){
+        $ItemId = $_GET['ItemId'];
+    }
+	
 	// Create a String consisting of the SQL command. Remember that
         // . is the concatenation operator. $varname within double quotes
  	// will be evaluated by PHP
-	$query = "DELETE FROM INVENTORYITEM WHERE ItemId = $itemId";
+	$query = "DELETE FROM INVENTORYITEM WHERE ItemId = '$ItemId'";
 
 	//Execute the query. The result will just be true or false
 	$result = mysql_query($query);
 
-	$message = "";
-
-	if (!$result) 
-	{
-  	  $message = "Error in deleting item: $itemId". mysql_error();
-	}
-	else
-	{
-	  $message = "Data for item: $itemId";
-	  
+	if($result == false){
+		$_SESSION['message'] = "Error deleting record! Error number:". mysql_errno();
+		$_SESSION['msg_type'] = "danger";
+	}else{
+		$_SESSION['message'] = "Record has been deleted!";
+		$_SESSION['msg_type'] = "warning";
 	}
 
-	item_delete_result_ui($message);
+	header("location: ../view/itemCRUD.php");
 			   
 }
 

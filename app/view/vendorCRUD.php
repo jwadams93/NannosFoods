@@ -20,7 +20,7 @@
     		echo "Unable to select ".$dbname.": " . mysql_error();
 		exit;
 	}
-}
+    }
 
     if(isset($_POST['search'])){
 
@@ -31,8 +31,8 @@
         $query = mysql_real_escape_string($query);
         // makes sure nobody uses SQL injection
          
-        $raw_results = mysql_query("SELECT * FROM RETAILSTORE
-            WHERE (`StoreCode` LIKE '%$query%') OR (`StoreName` LIKE '%$query%')") or die(mysql_error()); 
+        $raw_results = mysql_query("SELECT * FROM VENDOR
+            WHERE (`VendorCode` LIKE '%$query%') OR (`VendorName` LIKE '%$query%')") or die(mysql_error()); 
     }
 ?>
 
@@ -46,10 +46,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./style/style.css"/>
-    <title>Store Search | Nanno's Foods</title>
+    <title>Vendor Search | Nanno's Foods</title>
 </head>
 
 <body>
+
+    
 
     <?php if(isset($_SESSION['message'])): ?>
 
@@ -65,13 +67,13 @@
     <?php endif ?>
 
     <div class="container">
-        <p>What is the store code or name of the store you would like to search?</p>
+        <p>What is the Vendor code or name of the Vendor you would like to search?</p>
 
         <div class="row justify-content-center">
-            <form action="storeCRUD.php" method="POST">
+            <form action="vendorCRUD.php" method="POST">
                 <input type="text" name="query">
                 <input type="submit" name="search" class="btn btn-primary" value="Search">
-                <input type="button" name="back" class="btn btn-primary" value="Back" onClick="window.location='./store_main.html'">
+                <input type="button" name="back" class="btn btn-primary" value="Back" onClick="window.location='./vendor_main.html'">
             </form>
         </div>
         <table class="table">
@@ -79,21 +81,21 @@
             if(mysql_num_rows($raw_results) > 0){ // if one or more rows are returned do following
                 echo "<thead>
                         <tr>
-                          <th>Store Code</th>
-                          <th>Store Name</th>
+                          <th>Vendor Code</th>
+                          <th>Vendor Name</th>
                           <th colspan='2'>Action</th>
                       </thead>
                       <tbody>";
 
                 while($results = mysql_fetch_array($raw_results)){
                 // $results = mysql_fetch_array($raw_results) puts data from database into array, while it's valid it does the loop
-                    echo "<tr>"."<td>".$results['StoreCode']."</td>"
-                              ."<td>".$results['StoreName']."</td>"
+                    echo "<tr>"."<td>".$results['VendorCode']."</td>"
+                              ."<td>".$results['VendorName']."</td>"
                               ."<td>".
-                              "<input type='button' name='modify' value='Modify' class='btn btn-info' onClick=".'"window.location='."'./modify_store_ui.php?StoreCode=".$results['StoreCode']."'".'"/>'
+                              "<input type='button' name='modify' value='Modify' class='btn btn-info' onClick=".'"window.location='."'./modify_vendor_ui.php?VendorCode=".$results['VendorCode']."'".'"/>'
                               ."</td>"
                               ."<td>".
-                                "<input type='button' name='delete' value='Delete' class='btn btn-danger' onClick=".'"window.location='."'../model/store_delete.php?StoreCode=".$results['StoreCode']."'".'"/>'
+                                "<input type='button' name='delete' value='Delete' class='btn btn-danger' onClick=".'"window.location='."'../model/vendor_delete.php?VendorCode=".$results['VendorCode']."'".'"/>'
                               ."</td>"."</tr>";
                 }
                 echo "</tbody>";

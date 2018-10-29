@@ -1,23 +1,43 @@
 <!-- This is the initial screen for the Inventory Handling System -->
 <!-- index.html -->
-<HTML>
-	<HEAD>
-		<TITLE>Nanno's Farms Inventory System</TITLE>
-		<link href="./style/style.css" rel="stylesheet" type="text/css">
-	</HEAD>
-	
-	<BODY>
-		<CENTER>
-			<H1> Inventory System </H1>
-			<!-- Setup navigation button -->
-			<input type="button" class="button" value="Items" 
-			onclick="window.location='item_main.html'"/><br /><br />
-			
-			<input type="button" class="button" value="Customers"
-			onclick="window.location='customer_main.html'"/><br /><br />
-			
-			<input type="button" class="button" value="Stores"
-			onclick="window.location='store_main.html'"/><br /><br />
-		</CENTER>
-	</BODY>
-</HTML>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="https://fonts.googleapis.com/css?family=Mali|Pacifico" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="./style/style.css">
+	<title>Nanno's Food</title>
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron jumbotron-fluid">
+			<div class="container">
+				<h1 class="display-4">Nanno's Foods</h1>
+				<p class="lead">Inventory System</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+
+				<input type="button" class="button" value="Items"
+					onclick="window.location='item_main.html'"/>
+			</div>
+			<div class="col-md-3">
+				<input type="button" class="button" value="Customers"
+				onclick="window.location='customer_main.html'"/>
+			</div>
+			<div class="col-md-3">
+				<input type="button" class="button" value="Stores"
+				onclick="window.location='store_main.html'"/>
+			</div>
+			<div class="col-md-3">
+				<input type="button" class="button" value="Vendors"
+				onclick="window.location='vendor_main.html'"/>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

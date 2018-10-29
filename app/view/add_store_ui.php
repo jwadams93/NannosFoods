@@ -1,69 +1,67 @@
-<!-- add_store_ui.php -->
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <title>Add a New Store | Nanno's Food</title>
+</head>
+<body>
+  
+<div class="container">
+  <div class="heading">
+    <h1>Add a new store</h1>
+  </div>
 
-//------------------------------------------------------------
-// Main Control Logic: It just calls a function
-ui_show_new_store_form();	
 
-//------------------------------------------------------------
-function ui_show_new_store_form()
-{
-  //Create an HTML document using the ECHO statements
-  echo "<HTML>";
-  echo "<HEAD>";
-	echo "<link href='./style/style.css' rel='stylesheet' type='text/css'/>";
-  echo "</HEAD>";
-  echo "<BODY>";
-    echo "<BR/>";
-    echo "<FORM action='../model/add_store_loc.php' method='post'>";
-    echo "<table>";
+  <form action="../model/add_store_loc.php" method='post'>
+                  <div class="form-group">
+                      <label>Store Code</label>
+                      <input type="text" name="StoreCode" value="<?php echo $results['StoreCode']?>" class="form-control">
+                  </div>
+  
+                  <div class="form-group">
+                      <label>Store Name</label>
+                      <input type="text" name="StoreName" value="<?php echo $results['StoreName']?>" class="form-control">
+                  </div>
 
-      echo '<tr>';  //
-      echo '<TD><SPAN ALIGN=RIGHT>Store Code:</SPAN></TD>';
-      echo '<TD><INPUT NAME="StoreCode" TYPE="text" SIZE=50/></TD>';
-      echo '</tr>';
+                  <div class="form-group">
+                      <label>Address</label>
+                      <input type="text" name="Address" value="<?php echo $results['Address']?>" class="form-control">
+                  </div>
+              
+                  <div class="form-group">
+                      <label>City</label>
+                      <input type="text" name="City" value="<?php echo $results['City']?>" class="form-control">
+                  </div>
 
-      echo '<tr>';  //
-      echo '<TD><SPAN ALIGN=RIGHT>Store Name:</SPAN></TD>';
-      echo '<TD><INPUT NAME="StoreName" TYPE="text" SIZE=50/></TD>';
-      echo '</tr>';
-    
-      echo '<tr>';  //
-      echo '<TD><SPAN ALIGN=RIGHT>Address:</SPAN></TD>';
-      echo '<TD><INPUT NAME="Address" TYPE="text" SIZE=50/></TD>';
-      echo '</tr>';
+                  <div class="form-group">
+                      <label>State</label>
+                      <input type="text" name="State" value="<?php echo $results['State']?>" class="form-control">
+                  </div>
 
-      echo '<tr>';  //
-      echo '<TD><SPAN ALIGN=RIGHT>City:</SPAN></TD>';
-      echo '<TD><INPUT NAME="City" TYPE="text" SIZE=50/></TD>';
-      echo '</tr>';
-	  
-	    echo '<tr>';  //
-      echo '<TD><SPAN ALIGN=RIGHT>State:</SPAN></TD>';
-      echo '<TD><INPUT NAME="State" TYPE="text" SIZE=50/></TD>';
-      echo '</tr>';
-	  
-	    echo '<tr>';  //
-      echo '<TD><SPAN ALIGN=RIGHT>Zip:</SPAN></TD>';
-      echo '<TD><INPUT NAME="ZIP" TYPE="text" SIZE=50/></TD>';
-      echo '</tr>';
-      
-      echo '<tr>';  //
-      echo '<TD><SPAN ALIGN=RIGHT>Phone:</SPAN></TD>';
-      echo '<TD><INPUT NAME="Phone" TYPE="text" SIZE=50/></TD>';
-      echo '</tr>';
-	  
-	    echo '<tr>';  //
-      echo '<TD><SPAN ALIGN=RIGHT>Manager Name:</SPAN></TD>';
-      echo '<TD><INPUT NAME="ManagerName" TYPE="text" SIZE=50/></TD>';
-      echo '</tr>';
+                  <div class="form-group">
+                      <label>ZIP</label>
+                      <input type="text" name="ZIP" value="<?php echo $results['ZIP']?>" class="form-control">
+                  </div>
 
-  echo "</table>";
-  echo '<input type="submit" class="button" value="Submit New Store Data" />';
-  echo '<input type="reset" class="button" value="Reset" />';
- 
-  echo "</FORM>";
-  echo "</BODY>";
-  echo "</HTML>";
-}
-?>
+                  <div class="form-group">
+                      <label>Phone</label>
+                      <input type="text" name="Phone" value="<?php echo $results['Phone']?>" class="form-control">
+                  </div>
+
+                  <div class="form-group">
+                      <label>Manager Name</label>
+                      <input type="text" name="ManagerName" value="<?php echo $results['ManagerName']?>" class="form-control">
+                  </div>
+
+                  <div class="form-group">
+                      <input type="submit" class="btn btn-primary" value="Submit">
+                      <input type="reset" class="btn btn-primary" value="Reset">
+                      <input type="button" name="back" class="btn btn-primary" value="Back" onClick="window.location='./store_main.html'">
+                  </div>
+  </form>
+</div>
+</body>
+</html>

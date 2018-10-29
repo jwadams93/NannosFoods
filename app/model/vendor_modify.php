@@ -2,12 +2,13 @@
 
 require('../config/config.inc');
 
+
 session_start();
 // Main control logic
-insert_store_loc();
+update_vendor();
 
 //-------------------------------------------------------------
-function insert_store_loc(){
+function update_vendor(){
 
 	// Connect to the 'test' database 
         // The parameters are defined in the teach_cn.inc file
@@ -16,30 +17,35 @@ function insert_store_loc(){
 
 	// Get the information entered into the webpage by the user
         // These are available in the super global variable $_POST
-	// This is actually an associative array, indexed by a string
-	$StoreCode = $_POST['StoreCode'];
-	$StoreName = $_POST['StoreName'];
+    // This is actually an associative array, indexed by a string
+    $VendorCode = $_POST['VendorCode'];
+    $VendorName = $_POST['VendorName'];
     $Address = $_POST['Address'];
     $City = $_POST['City'];
     $State = $_POST['State'];
     $ZIP = $_POST['ZIP'];
     $Phone = $_POST['Phone'];
-    $ManagerName = $_POST['ManagerName'];
+    $ContactPersonName = $_POST['ContactPersonName'];
+    $Password = $_POST['Password'];
+    $ActiveStatus = $_POST['ActiveStatus'];
         
 	// Create a String consisting of the SQL command. Remember that
         // . is the concatenation operator. $varname within double quotes
  	// will be evaluated by PHP
-	$insertStmt = "INSERT INTO `RETAILSTORE` (StoreCode, StoreName, 
-		       Address, City, State, ZIP, Phone, ManagerName) values ('$StoreCode',
-                      '$StoreName', '$Address', '$City', '$State', '$ZIP', '$Phone', '$ManagerName')";
+	$updateStmt = "UPDATE `VENDOR` SET VendorName = '$VendorName', Address = '$Address', City = '$City', State = '$State', ZIP = '$ZIP', Phone = '$Phone', ContactPersonName = '$ContactPersonName', Password = '$Password', ActiveStatus = '$ActiveStatus' WHERE VendorCode = '$VendorCode'";
 
 	//Execute the query. The result will just be true or false
-	$result = mysql_query($insertStmt);
+	$result = mysql_query($updateStmt);
 
-	$_SESSION['message'] = "Record has been saved!";
-	$_SESSION['msg_type'] = "success";
+	if($result == false){
+		$_SESSION['message'] = "Error updating record! Error number:". mysql_errno();
+		$_SESSION['msg_type'] = "danger";
+	}else{
+		$_SESSION['message'] = "Record has been updated!";
+		$_SESSION['msg_type'] = "warning";
+	}
 
-	header("location: ../view/storeCRUD.php");
+	header("location: ../view/vendorCRUD.php");
 			   
 }
 

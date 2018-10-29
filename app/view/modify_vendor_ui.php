@@ -20,11 +20,11 @@
 	}
 }
 
-if(isset($_GET['StoreCode'])){
-    $StoreCode = $_GET['StoreCode'];
+if(isset($_GET['VendorCode'])){
+    $VendorCode = $_GET['VendorCode'];
 }
 
-$query = "SELECT * FROM RETAILSTORE WHERE StoreCode = '$StoreCode'";
+$query = "SELECT * FROM VENDOR WHERE VendorCode = '$VendorCode'";
 
 $results = mysql_fetch_array(mysql_query($query));
 
@@ -36,22 +36,22 @@ $results = mysql_fetch_array(mysql_query($query));
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <title>Modify Store</title>
+    <title>Modify Vendor | Nanno's Foods</title>
 </head>
 <body>
     
     <div class="container">
         <div class="row justify-content-center">
-            <form action="../model/store_modify.php" method="POST">
+            <form action="../model/vendor_modify.php" method="POST">
 
-                <?php echo "<h1>This is the Store Code $StoreCode
-                            The Store Name is ".$results['StoreName']."</h1>"?>
+                <?php echo "<h1>This is the Vendor Code $VendorCode
+                            The Vendor Name is ".$results['VendorName']."</h1>"?>
 
-                <input type="hidden" name="StoreCode" value="<?php echo $results['StoreCode']?>">
+                <input type="hidden" name="VendorCode" value="<?php echo $results['VendorCode']?>">
 
                 <div class="form-group">
-                    <label>Store Name</label>
-                    <input type="text" name="StoreName" value="<?php echo $results['StoreName']?>" class="form-control">
+                    <label>Vendor Name</label>
+                    <input type="text" name="VendorName" value="<?php echo $results['VendorName']?>" class="form-control">
                 </div>
 
                 <div class="form-group">
@@ -80,14 +80,35 @@ $results = mysql_fetch_array(mysql_query($query));
                 </div>
 
                 <div class="form-group">
-                    <label>Manager Name</label>
-                    <input type="text" name="ManagerName" value="<?php echo $results['ManagerName']?>" class="form-control">
+                    <label>ContactPersonName</label>
+                    <input type="text" name="ContactPersonName" value="<?php echo $results['ContactPersonName']?>" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="text" name="Password" value="<?php echo $results['Password']?>" class="form-control">
+                </div>
+
+                <div class="form-group custom-select">
+                    <label>ActiveStatus</label>
+                    <select name="ActiveStatus" class="custom-select form-control">
+                        <option selected><?php echo $results['ActiveStatus']?></option>
+
+                        <?php
+                            if($results['ActiveStatus'] == 'inactive'):
+                                echo '<option value="active">active</option>';
+                            else:
+                                echo '<option value="inactive">inactive</option>';
+                            endif;
+                        ?>
+
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="Submit">
                     <input type="reset" class="btn btn-primary" value="Reset">
-                    <input type="button" name="back" class="btn btn-primary" value="Back" onClick="window.location='./store_main.html'">
+                    <input type="button" name="back" class="btn btn-primary" value="Back" onClick="window.location='./vendor_main.html'">
                 </div>
             </form>
         </div>

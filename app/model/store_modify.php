@@ -2,10 +2,8 @@
 
 require('../config/config.inc');
 
-//This file contains php code that will be executed after the
-//insert operation is done.
-require('../view/store_add_result_ui.inc');
 
+session_start();
 // Main control logic
 update_store_loc();
 
@@ -37,19 +35,15 @@ function update_store_loc(){
 	//Execute the query. The result will just be true or false
 	$result = mysql_query($updateStmt);
 
-	$message = "";
-
-	if (!$result) 
-	{
-  	  $message = "Error in updating Store: $StoreName , $Address: ". mysql_error();
-	}
-	else
-	{
-	  $message = "Data for Store: $StoreName , $Address updated successfully.";
-	  
+	if($result == false){
+		$_SESSION['message'] = "Error updating record! Error number:". mysql_errno();
+		$_SESSION['msg_type'] = "danger";
+	}else{
+		$_SESSION['message'] = "Record has been Updated!";
+		$_SESSION['msg_type'] = "success";
 	}
 
-	ui_show_store_loc_result($message);
+	header("location: ../view/storeCRUD.php");
 			   
 }
 

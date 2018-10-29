@@ -1,15 +1,26 @@
+html{
+    background-image: linear-gradient( 
+    to right bottom, 
+    rgba(#2998ff, 0.8), 
+    rgba(#5643fa, 0.8)), 
+    url(./style/img/light-grey-terrazzo.png);
+}
+
 .button {
-    background-color: #4CAF50; /* Green */
+    background-color:linear-gradient( 
+        to right bottom, 
+        rgba(#2998ff, 0.8), 
+        rgba(#5643fa, 0.8)); 
     border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-	width: 50%;
+    width: 50%;
+    border-radius: 25px;
 }
 .button:hover {
 	background-color: #333333;
@@ -27,6 +38,30 @@
 	border-radius: 5px;
 }
 
-table{
-    margin-top: 30px;
+
+/* newButton */
+/* 
+.feature-box {
+    background-color: rgba(#2998ff, .8);
+    font-size: 1.5rem;
+    padding: 2.5rem;
+    text-align: center;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+    /* box-shadow: 0 1.5rem 4rem rgba(#000, .15); */
+    /* transition: transform .3s;
 }
+    
+.feature-box__icon {
+        font-size: 6rem;
+        margin-bottom: .5rem;
+        display: inline-block;
+        background-image: linear-gradient(to right, #2998ff, #5643fa);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+.feature-box:hover {
+        transform: translateY(-1.5rem) scale(1.03);
+} */ 
