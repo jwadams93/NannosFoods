@@ -24,7 +24,8 @@ function delete_vendor(){
 	// Create a String consisting of the SQL command. Remember that
         // . is the concatenation operator. $varname within double quotes
  	// will be evaluated by PHP
-	$query = "DELETE FROM VENDOR WHERE VendorCode = '$VendorCode'";
+	// $query = "DELETE FROM VENDOR WHERE VendorCode = '$VendorCode'";
+	$query = "UPDATE VENDOR SET ActiveStatus = 'inactive' WHERE VendorCode = '$VendorCode'";
 
 	//Execute the query. The result will just be true or false
 	$result = mysql_query($query);
@@ -33,7 +34,7 @@ function delete_vendor(){
 		$_SESSION['message'] = "Error deleting record! Error number:". mysql_errno();
 		$_SESSION['msg_type'] = "danger";
 	}else{
-		$_SESSION['message'] = "Record has been deleted!";
+		$_SESSION['message'] = "Vendor was set to inactive!";
 		$_SESSION['msg_type'] = "warning";
 	}
 

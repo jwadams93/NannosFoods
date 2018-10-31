@@ -45,7 +45,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./style/style.css"/>
     <title>Item Search | Nanno's Foods</title>
 </head>
 
@@ -100,7 +99,12 @@
                 echo "</tbody>";
             }
             else{ // if there is no matching rows do following
-                echo "No results";
+                echo '<center>
+              <br/><br/>
+              <h5>Item not found! Would you like to add a new Item?</h5>
+              <button value="newItem" name="newItem" class="btn btn-warning"
+                onclick="window.location='.'\'./add_item_ui.php\''.'">Add New Item</button>
+              </center>';
             }
         ?>
         </table>

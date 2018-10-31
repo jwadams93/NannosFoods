@@ -44,8 +44,13 @@ $results = mysql_fetch_array(mysql_query($query));
         <div class="row justify-content-center">
             <form action="../model/store_modify.php" method="POST">
 
-                <?php echo "<h1>This is the Store Code $StoreCode
-                            The Store Name is ".$results['StoreName']."</h1>"?>
+                <?php
+                    echo "<h1>You are currently modifying Store ";
+                    echo $results['StoreName'];
+                    echo " (Store Code: ";
+                    echo $results['StoreCode'];
+                    echo ") </h1>" ;
+                ?>
 
                 <input type="hidden" name="StoreCode" value="<?php echo $results['StoreCode']?>">
 

@@ -20,93 +20,100 @@
 
                   <div class="form-group">
                       <label>Name</label>
-                      <input type="text" name="Name" value="<?php echo $results['Name']?>" class="form-control">
+                      <input type="text" name="Name" value="" class="form-control" required
+                        pattern="^[A-Z][a-z]*|[A-Z][a-z]*((-|\s)[A-Z][a-z]*)*"
+                        title="Name Invalid: Names must begin with a capital: John, John-Brown, John Peters"/>
                   </div>
-              
+
                   <div class="form-group">
                       <label>Address</label>
-                      <input type="text" name="Address" value="<?php echo $results['Address']?>" class="form-control">
+                      <input type="text" name="Address" value="" class="form-control" required>
                   </div>
 
                   <div class="form-group">
                       <label>City</label>
-                      <input type="text" name="City" value="<?php echo $results['City']?>" class="form-control">
+                      <input type="text" name="City" value="" class="form-control" required
+                      pattern="[A-Z][a-z]*((-|\s){1}([A-Z]?[a-z]*))*"
+                      title="Invalid City: Ex. City, City-Name, City-name, City Name, City name"/>
                   </div>
 
                   <div class="form-group">
                       <label>State</label>
-                      <select name='state' class="custom-select form-control">
-                        <option value='alaska'>Alaska</option>
-                        <option value='alabama'>Alabama</option>
-                        <option value='american samoa'>American Samoa</option>
-                        <option value='arkansas'>Arkansas</option>
-                        <option value='arizona'>Arizona</option>
-                        <option value='california'>California</option>
-                        <option value='colorado'>Colorado</option>
-                        <option value='connecticut'>Connecticut</option>
-                        <option value='D.C.'>District of Columbia</option>
-                        <option value='delaware'>Delaware</option>
-                        <option value='florida'>Florida</option>
-                        <option value='georgia'>Georgia</option>
-                        <option value='guam'>Guam</option>
-                        <option value='hawaii'>Hawaii</option>
-                        <option value='iowa'>Iowa</option>
-                        <option value='idaho'>Idaho</option>
-                        <option value='illinois'>Illinois</option>
-                        <option value='indiana'>Indiana</option>
-                        <option value='kansas'>Kansas</option>
-                        <option value='kentucky'>Kentucky</option>
-                        <option value='louisiana'>Louisiana</option>
-                        <option value='massachusetts'>Massachusetts</option>
-                        <option value='maryland'>Maryland</option>
-                        <option value='maine'>Maine</option>
-                        <option value='michigan'>Michigan</option>
-                        <option value='minnesota'>Minnesota</option>
-                        <option value='missouri'>Missouri</option>
-                        <option value='mississippi'>Mississippi</option>
-                        <option value='montana'>Montana</option>
-                        <option value='north carolina'>North Carolina</option>
-                        <option value='north dakota'>North Dakota</option>
-                        <option value='nebraska'>Nebraska</option>
-                        <option value='new hampshire'>New Hampshire</option>
-                        <option value='new jersey'>New Jersey</option>
-                        <option value='new mexico'>New Mexico</option>
-                        <option value='nevada'>Nevada</option>
-                        <option value='new york' selected='selected'>New York</option>
-                        <option value='ohio'>Ohio</option>
-                        <option value='oklahoma'>Oklahoma</option>
-                        <option value='oregon'>Oregon</option>
-                        <option value='pennsylvania'>Pennsylvania</option>
-                        <option value='puerto rico'>Puerto Rico</option>
-                        <option value='rhode island'>Rhode Island</option>
-                        <option value='south carolina'>South Carolina</option>
-                        <option value='south dakota'>South Dakota</option>
-                        <option value='tennessee'>Tennessee</option>
-                        <option value='texas'>Texas</option>
-                        <option value='utah'>Utah</option>
-                        <option value='virginia'>Virginia</option>
-                        <option value='virgin islands'>Virgin Islands</option>
-                        <option value='vermont'>Vermont</option>
-                        <option value='washington'>Washington</option>
-                        <option value='wisconsin'>Wisconsin</option>
-                        <option value='west virginia'>West Virginia</option>
-                        <option value='wyoming'>Wyoming</option>
-                    </select>
+                      <select id='state' name='State' class="custom-select form-control" required>
+                          <option></option>
+  						            <option value='Alaska'>Alaska</option>
+                          <option value='Alabama'>Alabama</option>
+                          <option value='American Samoa'>American Samoa</option>
+                          <option value='Arkansas'>Arkansas</option>
+                          <option value='Arizona'>Arizona</option>
+                          <option value='California'>California</option>
+                          <option value='Colorado'>Colorado</option>
+                          <option value='Connecticut'>Connecticut</option>
+                          <option value='D.C.'>District of Columbia</option>
+                          <option value='Delaware'>Delaware</option>
+                          <option value='Florida'>Florida</option>
+                          <option value='Georgia'>Georgia</option>
+                          <option value='Guam'>Guam</option>
+                          <option value='Hawaii'>Hawaii</option>
+                          <option value='Iowa'>Iowa</option>
+                          <option value='Idaho'>Idaho</option>
+                          <option value='Illinois'>Illinois</option>
+                          <option value='Indiana'>Indiana</option>
+                          <option value='Kansas'>Kansas</option>
+                          <option value='Kentucky'>Kentucky</option>
+                          <option value='Louisiana'>Louisiana</option>
+                          <option value='Massachusetts'>Massachusetts</option>
+                          <option value='Maryland'>Maryland</option>
+                          <option value='Maine'>Maine</option>
+                          <option value='Michigan'>Michigan</option>
+                          <option value='Minnesota'>Minnesota</option>
+                          <option value='Missouri'>Missouri</option>
+                          <option value='Mississippi'>Mississippi</option>
+                          <option value='Montana'>Montana</option>
+                          <option value='North Carolina'>North Carolina</option>
+                          <option value='North Dakota'>North Dakota</option>
+                          <option value='Nebraska'>Nebraska</option>
+                          <option value='New Hampshire'>New Hampshire</option>
+                          <option value='New Jersey'>New Jersey</option>
+                          <option value='New Mexico'>New Mexico</option>
+                          <option value='Nevada'>Nevada</option>
+                          <option value='New York'>New York</option>
+                          <option value='Ohio'>Ohio</option>
+                          <option value='Oklahoma'>Oklahoma</option>
+                          <option value='Oregon'>Oregon</option>
+                          <option value='Pennsylvania'>Pennsylvania</option>
+                          <option value='Puerto Rico'>Puerto Rico</option>
+                          <option value='Rhode Island'>Rhode Island</option>
+                          <option value='South Carolina'>South Carolina</option>
+                          <option value='South Dakota'>South Dakota</option>
+                          <option value='Tennessee'>Tennessee</option>
+                          <option value='Texas'>Texas</option>
+                          <option value='Utah'>Utah</option>
+                          <option value='Virginia'>Virginia</option>
+                          <option value='Virgin Islands'>Virgin Islands</option>
+                          <option value='Vermont'>Vermont</option>
+                          <option value='Washington'>Washington</option>
+                          <option value='Wisconsin'>Wisconsin</option>
+                          <option value='West Virginia'>West Virginia</option>
+                          <option value='Wyoming'>Wyoming</option>
+  					           </select>
                   </div>
 
                   <div class="form-group">
                       <label>ZIP</label>
-                      <input type="text" name="ZIP" value="<?php echo $results['ZIP']?>" class="form-control">
+                      <input type="text" name="Zip" value="" class="form-control" required
+                      pattern="[0-9]{5}" title="Zipcode must be exactly 5 digits"/>
                   </div>
 
                   <div class="form-group">
                       <label>Phone</label>
-                      <input type="text" name="Phone" value="<?php echo $results['Phone']?>" class="form-control">
+                      <input type="text" name="Phone" value="" class="form-control" required
+                      pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Invalid Phone: Must be in format XXX-XXX-XXXX"/>
                   </div>
 
                   <div class="form-group">
                       <label>Email</label>
-                      <input type="text" name="Email" value="<?php echo $results['Email']?>" class="form-control">
+                      <input type="email" name="Email" value="" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required/>
                   </div>
 
                   <div class="form-group">

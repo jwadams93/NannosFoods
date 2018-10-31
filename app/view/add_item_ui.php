@@ -8,8 +8,8 @@
   <title>Add a New Item | Nanno's Food</title>
 </head>
 <body>
-  
-<?php 
+
+<?php
   //---DATABASE CONNECTION
    require('../config/config.inc');
 
@@ -24,7 +24,7 @@
     	    exit;
 	}
 
-	// Select the database	
+	// Select the database
 	$dbh = mysql_select_db($dbname);
 	if (!$dbh){
     		echo "Unable to select ".$dbname.": " . mysql_error();
@@ -46,26 +46,26 @@
 
 
   <form action="../model/add_item.php" method='post'>
-  
+
                   <div class="form-group">
                       <label>Description</label>
-                      <input type="text" name="Description" value="<?php echo $results['Description']?>" class="form-control">
+                      <input type="text" name="Description" value="<?php echo $results['Description']?>" class="form-control" required/>
                   </div>
 
                   <div class="form-group">
                       <label>PromoDescription</label>
                       <input type="text" name="PromoDescription" value="<?php echo $results['PromoDescription']?>" class="form-control">
                   </div>
-              
+
                   <div class="form-group">
                       <label>Size</label>
-                      <input type="text" name="Size" value="<?php echo $results['Size']?>" class="form-control">
+                      <input type="text" name="Size" value="<?php echo $results['Size']?>" class="form-control" required>
                   </div>
 
                   <div class="form-group">
                       <label>Division</label>
-                      <select name="Division" class="custom-select form-control">
-                        <option selected>Choose...</option>
+                      <select name="Division" class="custom-select form-control" required>
+                        <option value="" selected>Choose a Division</option>
                         <option value="Food Convenience">Food Convenience</option>
                         <option value="Food Grocery">Food Grocery</option>
                         <option value="General Merchandise">General Merchandise</option>
@@ -76,13 +76,13 @@
 
                   <div class="form-group">
                       <label>Department</label>
-                      <input type="text" name="Department" value="<?php echo $results['Department']?>" class="form-control">
+                      <input type="text" name="Department" value="<?php echo $results['Department']?>" class="form-control" required>
                   </div>
 
                   <div class="form-group">
                       <label>Category</label>
-                      <select name="Category" class="custom-select form-control">
-                        <option selected>Choose...</option>
+                      <select name="Category" class="custom-select form-control" required>
+                        <option value="" selected>Choose a Category</option>
                         <option value="Candy & Food Items">Candy & Food Items</option>
                         <option value="Tobacco">Tobacco</option>
                         <option value="Beverage Alcohol">Beverage Alcohol</option>
@@ -98,22 +98,25 @@
 
                   <div class="form-group">
                       <label>Item Cost</label>
-                      <input type="text" name="ItemCost" value="<?php echo $results['ItemCost']?>" class="form-control">
+                      <input type="text" name="ItemCost" value="<?php echo $results['ItemCost']?>" class="form-control" required
+                      pattern="[0-9]*.[0-9]{2}" title="Cost must be in X.XX format" />
                   </div>
 
                   <div class="form-group">
                       <label>Item Retail</label>
-                      <input type="text" name="ItemRetail" value="<?php echo $results['ItemRetail']?>" class="form-control">
+                      <input type="text" name="ItemRetail" value="<?php echo $results['ItemRetail']?>" class="form-control" required
+                      pattern="[0-9]*.[0-9]{2}" title="Retail cost must be in X.XX format" />
+
                   </div>
 
                   <div class="form-group">
                       <label>Image File Name</label>
-                      <input type="text" name="ImageFileName" value="<?php echo $results['ImageFileName']?>" class="form-control">
+                      <input type="text" name="ImageFileName" value="<?php echo $results['ImageFileName']?>" class="form-control" />
                   </div>
 
                   <div class="form-group">
                       <label>Vendor</label>
-                      <select name="VendorId" class="custom-select form-control">
+                      <select name="VendorId" class="custom-select form-control" required>
                         <option selected><?php echo $results['VendorName']?></option>
 
                         <?php

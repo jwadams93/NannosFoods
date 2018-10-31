@@ -45,7 +45,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./style/style.css"/>
     <title>Vendor Search | Nanno's Foods</title>
 </head>
 
@@ -81,9 +80,10 @@
             if(mysql_num_rows($raw_results) > 0){ // if one or more rows are returned do following
                 echo "<thead>
                         <tr>
-                          <th>Vendor Code</th>
-                          <th>Vendor Name</th>
-                          <th colspan='2'>Action</th>
+                        <th>Vendor Code</th>
+                        <th>Vendor Name</th>
+                        <th>Vendor Active Status</th> 
+                        <th colspan='2'>Action</th>
                       </thead>
                       <tbody>";
 
@@ -91,6 +91,7 @@
                 // $results = mysql_fetch_array($raw_results) puts data from database into array, while it's valid it does the loop
                     echo "<tr>"."<td>".$results['VendorCode']."</td>"
                               ."<td>".$results['VendorName']."</td>"
+                              ."<td>".$results['ActiveStatus']."</td>"
                               ."<td>".
                               "<input type='button' name='modify' value='Modify' class='btn btn-info' onClick=".'"window.location='."'./modify_vendor_ui.php?VendorCode=".$results['VendorCode']."'".'"/>'
                               ."</td>"
@@ -101,7 +102,12 @@
                 echo "</tbody>";
             }
             else{ // if there is no matching rows do following
-                echo "No results";
+                echo '<center>
+              <br/><br/>
+              <h5>Vendor not found! Would you like to add a new vendor?</h5>
+              <button value="newVendor" name="newVendor" class="btn btn-warning"
+                onclick="window.location='.'\'./add_vendor_ui.php\''.'">Add New Vendor</button>
+              </center>';
             }
         ?>
         </table>

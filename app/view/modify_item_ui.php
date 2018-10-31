@@ -12,7 +12,7 @@
     	    exit;
 	}
 
-	// Select the database	
+	// Select the database
 	$dbh = mysql_select_db($dbname);
 	if (!$dbh){
     		echo "Unable to select ".$dbname.": " . mysql_error();
@@ -44,12 +44,12 @@ $currentVendor= mysql_fetch_array(mysql_query($currentVendorQuery));
     <title>Modify Store</title>
 </head>
 <body>
-    
+
     <div class="container">
         <div class="row justify-content-center">
         <form action="../model/item_modify.php" method='post'>
 
-      <?php 
+      <?php
           echo "<h1>You are currently modifying ";
           echo $results['Description'];
           echo " (Item id: ";
@@ -61,7 +61,7 @@ $currentVendor= mysql_fetch_array(mysql_query($currentVendorQuery));
 
           <div class="form-group">
             <label>Description</label>
-            <input type="text" name="Description" value="<?php echo $results['Description']?>" class="form-control">
+            <input type="text" name="Description" value="<?php echo $results['Description']?>" class="form-control" required>
           </div>
 
           <div class="form-group">
@@ -71,12 +71,12 @@ $currentVendor= mysql_fetch_array(mysql_query($currentVendorQuery));
 
           <div class="form-group">
             <label>Size</label>
-            <input type="text" name="Size" value="<?php echo $results['Size']?>" class="form-control">
+            <input type="text" name="Size" value="<?php echo $results['Size']?>" class="form-control" required>
           </div>
 
           <div class="form-group">
             <label>Division</label>
-            <select name="Division" class="custom-select form-control">
+            <select name="Division" class="custom-select form-control" required>
               <option selected><?php echo $results['Division']?></option>
               <option value="Food Convenience">Food Convenience</option>
               <option value="Food Grocery">Food Grocery</option>
@@ -88,12 +88,12 @@ $currentVendor= mysql_fetch_array(mysql_query($currentVendorQuery));
 
           <div class="form-group">
             <label>Department</label>
-            <input type="text" name="Department" value="<?php echo $results['Department']?>" class="form-control">
+            <input type="text" name="Department" value="<?php echo $results['Department']?>" class="form-control" required>
           </div>
 
           <div class="form-group">
             <label>Category</label>
-            <select name="Category" class="custom-select form-control">
+            <select name="Category" class="custom-select form-control" required>
               <option selected><?php echo $results['Category']?></option>
               <option value="Candy & Food Items">Candy & Food Items</option>
               <option value="Tobacco">Tobacco</option>
@@ -110,12 +110,14 @@ $currentVendor= mysql_fetch_array(mysql_query($currentVendorQuery));
 
           <div class="form-group">
             <label>Item Cost</label>
-            <input type="text" name="ItemCost" value="<?php echo $results['ItemCost']?>" class="form-control">
+            <input type="text" name="ItemCost" value="<?php echo $results['ItemCost']?>" class="form-control"
+            pattern="[0-9]*.[0-9]{2}" title="Cost must be in X.XX format" required>
           </div>
 
           <div class="form-group">
             <label>Item Retail</label>
-            <input type="text" name="ItemRetail" value="<?php echo $results['ItemRetail']?>" class="form-control">
+            <input type="text" name="ItemRetail" value="<?php echo $results['ItemRetail']?>" class="form-control"
+            pattern="[0-9]*.[0-9]{2}" title="Retail cost must be in X.XX format" required/>
           </div>
 
           <div class="form-group">
@@ -125,7 +127,7 @@ $currentVendor= mysql_fetch_array(mysql_query($currentVendorQuery));
 
           <div class="form-group">
             <label>Vendor</label>
-            <select name="VendorId" class="custom-select form-control">
+            <select name="VendorId" class="custom-select form-control" required>
               <option value="<?php echo $currentVendor['VendorId']?>" selected><?php echo $currentVendor['VendorName']?></option>
 
                 <?php
