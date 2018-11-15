@@ -35,6 +35,10 @@ function insert_item(){
                       '$PromoDescription', '$Size', '$Division',
 					  '$Department', '$Category', '$ItemCost', '$ItemRetail', 
 					  '$ImageFileName', '$VendorId')";
+
+
+	htmlspecialchars($insertStmt);
+	mysql_real_escape_string($insertStmt);
 	//Execute the query. The result will just be true or false
 	$result = mysql_query($insertStmt);
 	
