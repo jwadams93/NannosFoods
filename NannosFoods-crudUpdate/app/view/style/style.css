@@ -1,0 +1,44 @@
+body{
+    background: #56CCF2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+input[type="image"] {
+    background-size: 50px 50px !important;
+    background-color: #f3f5f4;
+    border-radius: 90px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.33);
+}
+
+input[type="image"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(#000, 0.2);
+}
+
+input[type="image"]::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.greybutton {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all 0.2s;
+    position: relative;
+    border: none;
+    cursor: pointer;
+}
+
+.greybutton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(#000, 0.2);
+}
+
+.greybutton::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
